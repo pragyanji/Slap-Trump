@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pragyanji.github.io/Slap-Trump/sitemap.xml
