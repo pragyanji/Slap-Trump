@@ -1,0 +1,587 @@
+/* ═══════════════════════════════════════════
+   SLAP TRUMP — Premium Dark Aggressive Theme
+   ═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap');
+
+:root {
+    --bg-dark: #0a0a14;
+    --bg-surface: #12121e;
+    --bg-panel: rgba(18, 16, 32, 0.92);
+    --primary: #e63946;
+    --primary-glow: rgba(230, 57, 70, 0.4);
+    --secondary: #ff6b35;
+    --accent: #ffd166;
+    --accent-glow: rgba(255, 209, 102, 0.35);
+    --text: #f0ece2;
+    --text-muted: #8888aa;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    cursor: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ═══════════════════════════════════════════
+   APP LAYOUT
+   ═══════════════════════════════════════════ */
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 107, 53, 0.05) 0%, transparent 40%),
+        linear-gradient(180deg, #0e0c1a 0%, #0a0a14 40%, #080812 100%);
+}
+
+/* ═══════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════ */
+
+.header {
+    text-align: center;
+    padding: 14px 20px;
+    background: rgba(10, 8, 20, 0.7);
+    border-bottom: 2px solid var(--primary);
+    box-shadow: 0 4px 30px rgba(230, 57, 70, 0.15);
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.header-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8em;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    text-shadow: 0 0 30px var(--primary-glow);
+    animation: headerPulse 3s ease-in-out infinite;
+}
+
+.header-title .highlight {
+    color: var(--primary);
+    text-shadow: 0 0 40px var(--primary-glow), 0 0 80px rgba(230, 57, 70, 0.2);
+}
+
+@keyframes headerPulse {
+    0%, 100% { text-shadow: 0 0 20px var(--primary-glow); }
+    50% { text-shadow: 0 0 40px var(--primary-glow), 0 0 60px rgba(255, 107, 53, 0.2); }
+}
+
+.tagline {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════
+   GAME CONTAINER
+   ═══════════════════════════════════════════ */
+
+.game-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ═══════════════════════════════════════════
+   EQUIPMENT PANEL
+   ═══════════════════════════════════════════ */
+
+.equipment-panel {
+    width: 160px;
+    background: var(--bg-panel);
+    border-right: 2px solid var(--glass-border);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.03);
+}
+
+.panel-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 15px var(--accent-glow);
+    margin-bottom: 4px;
+}
+
+.equipment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.equip-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    padding: 12px 8px;
+    border-radius: 14px;
+    cursor: none;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.equip-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.equip-btn:hover {
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 107, 53, 0.15);
+}
+
+.equip-btn:hover::before {
+    opacity: 1;
+}
+
+.equip-btn.active {
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.25), rgba(255, 107, 53, 0.15));
+    border-color: var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow), inset 0 0 15px rgba(230, 57, 70, 0.1);
+}
+
+.equip-btn.active .equip-name {
+    color: var(--primary);
+}
+
+.equip-icon {
+    font-size: 1.8em;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.equip-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95em;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    transition: color 0.2s;
+}
+
+.equip-desc {
+    font-size: 0.65em;
+    color: var(--text-muted);
+}
+
+.equip-dmg {
+    font-size: 0.6em;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════
+   MAIN ARENA
+   ═══════════════════════════════════════════ */
+
+.arena {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 50% 45%, rgba(230, 57, 70, 0.03) 0%, transparent 50%);
+    overflow: hidden;
+}
+
+/* Vignette effect */
+.arena::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ═══════════════════════════════════════════
+   CANVAS
+   ═══════════════════════════════════════════ */
+
+.canvas-container {
+    position: relative;
+    z-index: 2;
+    width: min(65vw, 460px);
+    height: min(80vh, 580px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 20px rgba(230, 57, 70, 0.08));
+    transition: filter 0.15s;
+}
+
+.canvas-container.hit {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 50px rgba(255, 209, 102, 0.5));
+}
+
+#faceCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: none;
+}
+
+/* ═══════════════════════════════════════════
+   SPEECH BUBBLE
+   ═══════════════════════════════════════════ */
+
+.speech-bubble {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: #111;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px) scale(0.8);
+    transition: opacity 0.2s, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    text-align: center;
+}
+
+.speech-bubble.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* Triangle pointer */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid rgba(255, 255, 255, 0.95);
+}
+
+/* ═══════════════════════════════════════════
+   MILESTONE DISPLAY
+   ═══════════════════════════════════════════ */
+
+.milestone-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3em;
+    color: var(--accent);
+    text-align: center;
+    pointer-events: none;
+    z-index: 30;
+    opacity: 0;
+    text-shadow:
+        0 0 30px var(--accent-glow),
+        0 0 60px rgba(255, 209, 102, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.7);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.milestone-display.visible {
+    animation: milestonePopIn 2.5s ease-out forwards;
+}
+
+.milestone-display.victory {
+    font-size: 4.5em;
+    color: #00ff88;
+    text-shadow:
+        0 0 40px rgba(0, 255, 136, 0.5),
+        0 0 80px rgba(0, 255, 136, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.7);
+    animation: victoryPopIn 3.5s ease-out forwards;
+}
+
+@keyframes milestonePopIn {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    10% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    20% { transform: translate(-50%, -50%) scale(1); }
+    70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -60%) scale(0.8); }
+}
+
+@keyframes victoryPopIn {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(-5deg); }
+    8% { opacity: 1; transform: translate(-50%, -50%) scale(1.4) rotate(2deg); }
+    16% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    80% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    100% { opacity: 0; transform: translate(-50%, -60%) scale(0.7); }
+}
+
+/* ═══════════════════════════════════════════
+   FLYING EQUIPMENT
+   ═══════════════════════════════════════════ */
+
+.equipment-fly {
+    position: absolute;
+    pointer-events: none;
+    z-index: 25;
+    font-size: 3.5em;
+    opacity: 0;
+    will-change: transform, left, top, opacity;
+    filter: drop-shadow(0 0 12px rgba(255, 68, 68, 0.4));
+    text-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+}
+
+/* ═══════════════════════════════════════════
+   RESET BUTTON
+   ═══════════════════════════════════════════ */
+
+.reset-btn {
+    position: absolute;
+    bottom: 28px;
+    right: 24px;
+    padding: 10px 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1em;
+    letter-spacing: 0.08em;
+    border-radius: 12px;
+    cursor: none;
+    transition: all 0.25s;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+}
+
+.reset-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow);
+    transform: scale(1.05);
+}
+
+.reset-btn:active {
+    transform: scale(0.95);
+}
+
+/* ═══════════════════════════════════════════
+   HAND CURSOR
+   ═══════════════════════════════════════════ */
+
+.hand-cursor {
+    position: fixed;
+    font-size: 2.8em;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.1s;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    will-change: left, top;
+}
+
+.hand-cursor.visible {
+    opacity: 1;
+}
+
+.hand-cursor.slapping {
+    animation: slapCursor 0.15s ease-out;
+}
+
+@keyframes slapCursor {
+    0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) scale(1.4) rotate(-15deg); }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+}
+
+/* ═══════════════════════════════════════════
+   SCREEN FLASH
+   ═══════════════════════════════════════════ */
+
+.screen-flash {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.05s;
+}
+
+/* ═══════════════════════════════════════════
+   SCREEN SHAKE — applied on .app
+   ═══════════════════════════════════════════ */
+
+.app.shake {
+    animation: shakeAnim 0.3s ease-out;
+}
+
+.app.big-shake {
+    animation: bigShakeAnim 0.4s ease-out;
+}
+
+@keyframes shakeAnim {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-4px, -3px); }
+    20% { transform: translate(4px, 3px); }
+    30% { transform: translate(-3px, 4px); }
+    40% { transform: translate(3px, -4px); }
+    50% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    70% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+}
+
+@keyframes bigShakeAnim {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-8px, -6px) rotate(-0.5deg); }
+    20% { transform: translate(7px, 5px) rotate(0.5deg); }
+    30% { transform: translate(-6px, 7px) rotate(-0.3deg); }
+    40% { transform: translate(6px, -7px) rotate(0.3deg); }
+    50% { transform: translate(-4px, -4px) rotate(-0.2deg); }
+    60% { transform: translate(4px, 4px) rotate(0.2deg); }
+    70% { transform: translate(-2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 16px;
+    }
+
+    .header-title {
+        font-size: 2em;
+    }
+
+    .tagline {
+        font-size: 0.72em;
+    }
+
+    .game-container {
+        flex-direction: column;
+    }
+
+    .equipment-panel {
+        width: 100%;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 2px solid var(--glass-border);
+        padding: 8px;
+        gap: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .panel-title {
+        display: none;
+    }
+
+    .equipment-list {
+        flex-direction: row;
+        width: 100%;
+        gap: 6px;
+    }
+
+    .equip-btn {
+        min-width: 80px;
+        padding: 8px 6px;
+    }
+
+    .equip-icon {
+        font-size: 1.4em;
+    }
+
+    .equip-desc {
+        display: none;
+    }
+
+    .canvas-container {
+        width: 90vw;
+        height: 55vh;
+    }
+
+    .reset-btn {
+        bottom: 18px;
+        right: 14px;
+        padding: 8px 14px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.6em;
+    }
+
+    .canvas-container {
+        width: 95vw;
+        height: 50vh;
+    }
+
+    .equip-btn {
+        min-width: 65px;
+        padding: 6px 4px;
+    }
+
+    .equip-name {
+        font-size: 0.75em;
+    }
+
+    .equip-dmg {
+        display: none;
+    }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Slap Trump — Frustration Release</title>
+    <meta name="description" content="Frustrated by world leaders? Release your anger safely. Choose your weapon and slap away!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app" id="app">
+        <!-- Header -->
+        <header class="header" id="header">
+            <h1 class="header-title">SLAP <span class="highlight">TRUMP</span></h1>
+            <p class="tagline">Frustrated by world events? Take it out here. No consequences. Just satisfaction.</p>
+        </header>
+
+        <div class="game-container" id="gameContainer">
+            <!-- Equipment Panel -->
+            <aside class="equipment-panel" id="equipmentPanel">
+                <h2 class="panel-title">⚔️ ARSENAL</h2>
+                <div class="equipment-list" id="equipmentList">
+                    <button class="equip-btn active" data-equip="hand" id="equip-hand">
+                        <span class="equip-icon">✋</span>
+                        <span class="equip-name">HAND</span>
+                        <span class="equip-desc">Quick slap</span>
+                        <span class="equip-dmg">15 DMG</span>
+                    </button>
+                    <button class="equip-btn" data-equip="chappal" id="equip-chappal">
+                        <span class="equip-icon">🩴</span>
+                        <span class="equip-name">CHAPPAL</span>
+                        <span class="equip-desc">Stinging slap</span>
+                        <span class="equip-dmg">25 DMG</span>
+                    </button>
+                    <button class="equip-btn" data-equip="boxing" id="equip-boxing">
+                        <span class="equip-icon">🥊</span>
+                        <span class="equip-name">BOXING</span>
+                        <span class="equip-desc">Heavy punch</span>
+                        <span class="equip-dmg">40 DMG</span>
+                    </button>
+                    <button class="equip-btn" data-equip="hammer" id="equip-hammer">
+                        <span class="equip-icon">🔨</span>
+                        <span class="equip-name">HAMMER</span>
+                        <span class="equip-desc">BRUTAL hit</span>
+                        <span class="equip-dmg">60 DMG</span>
+                    </button>
+                    <button class="equip-btn" data-equip="broom" id="equip-broom">
+                        <span class="equip-icon">🧹</span>
+                        <span class="equip-name">JHAADU</span>
+                        <span class="equip-desc">Sweep attack</span>
+                        <span class="equip-dmg">30 DMG</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Arena -->
+            <main class="arena" id="arena">
+                <div class="canvas-container" id="canvasContainer">
+                    <canvas id="faceCanvas"></canvas>
+                </div>
+
+                <!-- Speech bubble -->
+                <div class="speech-bubble" id="speechBubble"></div>
+
+                <!-- Flying equipment -->
+                <div class="equipment-fly" id="equipmentFly"></div>
+
+                <!-- Milestone celebration text -->
+                <div class="milestone-display" id="milestoneDisplay"></div>
+
+                <!-- Reset -->
+                <button class="reset-btn" id="resetBtn">🔄 RESET</button>
+            </main>
+        </div>
+    </div>
+
+    <!-- Hand cursor (follows mouse) -->
+    <div class="hand-cursor" id="handCursor"></div>
+
+    <!-- Screen flash overlay -->
+    <div class="screen-flash" id="screenFlash"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
