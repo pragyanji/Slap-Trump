@@ -825,6 +825,8 @@ function setupEvents() {
     }, { passive: true });
 
     arena.addEventListener('touchend', (e) => {
+        // Don't trigger slap if the touch target is the reset button
+        if (e.target === resetBtn || resetBtn.contains(e.target)) return;
         e.preventDefault();
         handleSlap(state.mouseX, state.mouseY);
     });
@@ -841,9 +843,15 @@ function setupEvents() {
         });
     });
 
-    // Reset
+    // Reset — click for desktop, touchend for mobile
     resetBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        resetGame();
+    });
+
+    resetBtn.addEventListener('touchend', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
         resetGame();
     });
 
